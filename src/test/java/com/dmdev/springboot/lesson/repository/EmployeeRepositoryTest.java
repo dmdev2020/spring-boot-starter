@@ -2,6 +2,8 @@ package com.dmdev.springboot.lesson.repository;
 
 import com.dmdev.springboot.lesson.IntegrationTestBase;
 import com.dmdev.springboot.lesson.entity.EmployeeEntity;
+import com.dmdev.springboot.lesson.projection.EmployeeNameView;
+import com.dmdev.springboot.lesson.projection.EmployeeNativeView;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -36,4 +38,23 @@ class EmployeeRepositoryTest extends IntegrationTestBase {
         List<EmployeeEntity> employees = employeeRepository.findAllByFirstNameAndSalary("Ivan", 1000);
         assertThat(employees, hasSize(1));
     }
+
+    @Test
+    void testFindBySalary() {
+        List<EmployeeNameView> employees = employeeRepository.findAllBySalaryGreaterThan(500);
+        assertThat(employees, hasSize(2));
+    }
+
+    @Test
+    void testFindBySalaryNative() {
+        List<EmployeeNativeView> employees = employeeRepository.findAllBySalaryGreaterThanNative(500);
+        assertThat(employees, hasSize(2));
+    }
+
+    @Test
+    void testFindCustomQuery() {
+        List<EmployeeEntity> customQuery = employeeRepository.findCustomQuery();
+        assertThat(customQuery, hasSize(0));
+    }
+
 }
