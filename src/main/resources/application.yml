@@ -9,5 +9,4 @@ spring:
 
 # V(version)__description.sql
   flyway:
-    schemas: test_schema
-
+    baseline-on-migrate: true
