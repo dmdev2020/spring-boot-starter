@@ -27,6 +27,7 @@ dependencies {
     compile 'org.postgresql:postgresql'
     compile 'org.projectlombok:lombok'
     compile 'com.querydsl:querydsl-jpa'
+    compile 'org.flywaydb:flyway-core'
 
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'com.querydsl:querydsl-apt'

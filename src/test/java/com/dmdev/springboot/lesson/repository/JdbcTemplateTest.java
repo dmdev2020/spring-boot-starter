@@ -2,15 +2,10 @@ package com.dmdev.springboot.lesson.repository;
 
 import com.dmdev.springboot.lesson.IntegrationTestBase;
 import com.dmdev.springboot.lesson.entity.CompanyEntity;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -35,6 +30,7 @@ class JdbcTemplateTest extends IntegrationTestBase {
     void testReturning() {
         String companyName = "Microsoft";
         jdbcOperations.update(INSERT_SQL, companyName);
+
 
         List<CompanyEntity> result = jdbcOperations.query(DELETE_RETURNING_SQL,
                 (rs, rowNum) -> CompanyEntity.builder()
